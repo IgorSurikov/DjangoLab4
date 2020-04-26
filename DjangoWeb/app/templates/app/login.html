@@ -1,0 +1,37 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row row-cols-1">
+        <h2>Вход</h2>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col">
+            <form method="POST" class="post-form">{% csrf_token %}
+            {% for f in form %}
+                <div class="form-group">
+                    
+                    {{ f.label }}
+                    {{ f }}
+                    {% if f.errors %}
+                         <div class="alert alert-danger my-3">
+                             {{ f.errors }}
+                         </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if form.errors %}
+                <div class="alert alert-danger my-3">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-secondary">Войти</button>
+            </form>
+        </div>
+    
+    </div>
+</div>
+
+{% endblock %}
