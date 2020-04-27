@@ -9,9 +9,6 @@ from multiprocessing import Pool,Process
 
 admin.site.unregister(User)
 
-
-
-
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
     actions = [ 'send_email' ]
